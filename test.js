@@ -4,8 +4,6 @@ const endBoundary = Array.from(document.querySelectorAll('*')).find(el => el.inn
 
 const boundaries = [startBoundary.id, endBoundary.id];
 
-// startBoundary.push(endBoundary); // combine start and end boundary in one array
-
 //SO#'s you want AA202s for
 let soNums = ["9844826", "9849414"];
 
@@ -14,5 +12,10 @@ const nobrList = Array.from(document.querySelectorAll('nobr')).filter(el => {
   return (el.id > boundaries[0] && 
     el.id < boundaries[boundaries.length - 1] && soNums.some(word => el.textContent.includes(word)) && !el.textContent.includes("CM")); 
 }); 
+
+// extract only the textContent from each node
+for (let i = 0; i < nobrList.length; i++) {
+    nobrList[i] = nobrList[i].textContent; 
+}
 
 console.log(nobrList);
